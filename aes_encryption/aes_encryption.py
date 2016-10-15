@@ -1,24 +1,7 @@
 import key_schedule
 from utils.used_functions import *
 from utils.constants import *
-
-
-def text_convert(plain_text):
-    bit_message = list()
-    for char in plain_text:
-        bit_message.append(ord(char))
-    return bit_message
-
-
-def _16byes(plain_text):
-    message = list()
-    for i in range(0, len(plain_text), 16):
-        message.append(text_convert(plain_text[i:i+16]))
-
-    for i in message:
-        while len(i) < 16:
-            i.append(0)
-    return message
+import operator
 
 
 class AesEncryption(object):
@@ -42,6 +25,26 @@ class AesEncryption(object):
 
     def add_round_key(self):
         pass
+
+
+def run_encryption():
+    encryption = AesEncryption()
+    for round_num in range(1, NUM_ROUNDS+1):
+        if round_num == 1:
+            encryption.add_round_key()
+        for method in ['sub_bytes', 'shift_rows', 'mix_columns', 'add_round_key']:
+            if method == 'mix_columns' and round_num == 16:
+                continue
+            operator.methodcaller(method)(encryption)
+
+
+class AesDecryption(object):
+    def __init__(self):
+        pass
+
+
+def run_decryption():
+    pass
 
 
 #   For testing purposes
