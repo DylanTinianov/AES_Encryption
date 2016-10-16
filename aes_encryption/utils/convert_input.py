@@ -20,7 +20,7 @@ def text_convert(plain_text):
     return bit_message
 
 
-def _16byes(plain_text):
+def bytes_16(plain_text):
     message = list()
     for i in range(0, len(plain_text), 16):
         message.append(text_convert(plain_text[i:i+16]))
