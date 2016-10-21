@@ -1,3 +1,4 @@
+<img src="https://github.com/DylanTinianov/Images/blob/master/Logo/myLogo.png"/ width="40">
 # AES Encryption
 AES Encryption on text files
 
