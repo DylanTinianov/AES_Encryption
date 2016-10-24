@@ -21,7 +21,12 @@ class AesEncryption(object):
                 offset += 1
 
     def mix_columns(self):
-        pass
+        for i in range(len(self.encrypted_message)):
+            count = 0
+            for part in range(0, 16, 4):
+                self.encrypted_message[i][part:part + 4] = \
+                    mix_col_multiply(vector_=self.encrypted_message[i][part:part + 4], count=count)
+                count += 1
 
     def add_round_key(self):
         pass
@@ -48,6 +53,10 @@ def test():
 
     print "Shit Rows"
     encryption.shift_rows()
+    encryption.__str__()
+
+    print "mix cols"
+    encryption.mix_columns()
     encryption.__str__()
 
 
