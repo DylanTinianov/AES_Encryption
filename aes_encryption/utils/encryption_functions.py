@@ -9,9 +9,21 @@ def rotate(word_32):
     return word_32
 
 
+def rotate_inv(word_32):
+    for i in range(3):
+        word_32 = rotate(word_32)
+    return word_32
+
+
 def shift_row(_bytes, offset):
     for i in range(offset):
         _bytes = rotate(word_32=_bytes)
+    return _bytes
+
+
+def shift_row_inv(_bytes, offset):
+    for i in range(offset):
+        _bytes = rotate_inv(word_32=_bytes)
     return _bytes
 
 
